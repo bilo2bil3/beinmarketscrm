@@ -8,9 +8,9 @@
         <div class="items-center justify-center ">
 
                 <div class="flex flex-col text-center ">
-                <h1 class="text-4xl text-center text-[#004aad] font-extrabold">Connect Google Sheets</h1>
+                <h1 class="text-4xl text-center text-amber-600  font-extrabold">Connect Google Sheets</h1>
         
-                <a class="text-gray-500 dark:text-gray-200 hover:text-blue-500" href="{% url 'leads:lead-list' %}">
+                <a class="text-gray-500 dark:text-gray-200 hover:text-amber-600" href="{% url 'leads:lead-list' %}">
                     Go back to leads
                 </a><br>
 </div>
@@ -20,7 +20,7 @@
         {% csrf_token %}
         {{ form|crispy }}
         <div class="w-full">
-        <button type='submit' class="w-1/4 text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md">
+        <button type='submit' class="w-1/4 text-black hover:text-amber-600 bg-amber-600 hover:bg-black px-3 py-2 rounded-md">
             Connect
         </button>
         </div>
@@ -29,22 +29,22 @@
         <div class="flex flex-col ">
             <div class="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 ">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-blue-600 sm:rounded-lg   ">
+                <div class="shadow overflow-hidden border-b  border-amber-600  sm:rounded-lg   ">
                 <table class="min-w-full divide-y 1/2">
                     <thead class="bg-gray-50" >
                         <tr>
-                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-white bg-blue-800 dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
+                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-amber-600 font-bold bg-black dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
                             Source 
                             </th>
 
-                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-white bg-blue-800 dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
+                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-amber-600 font-bold bg-black dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
                             Url 
                             </th>
 
-                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-white bg-blue-800 dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
+                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-amber-600 font-bold bg-black dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
                         Sheet name
                         </th>
-                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-white bg-blue-800 dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
+                            <th scope="col" class="px-8 py-3 text-centre text-xs font-medium text-amber-600 font-bold bg-black dark:bg-gray-900  gap-x-2.5  uppercase tracking-wider">
                         Delete
                         </th>
                         </tr>
@@ -54,7 +54,7 @@
                 {% for sheet in sheets %}
                             <tr class="bg-gray-100 dark:bg-gray-900 text-center">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-400">
-                                    <a class="text-blue-800 dark:text-indigo-600 hover:text-blue-800">{{ sheet.source }}</a>
+                                    <a class="text-amber-600 font-bold">{{ sheet.source }}</a>
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-200  text-center ">
@@ -66,7 +66,7 @@
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
-                                    <a href="{% url 'leads:delete-sheet' sheet.pk %}" class="text-blue-800 dark:text-gray-200 hover:text-indigo-900">
+                                    <a href="{% url 'leads:delete-sheet' sheet.pk %}" class="text-amber-600 font-bold">
                                         Delete
                                     </a>
                                 </td>

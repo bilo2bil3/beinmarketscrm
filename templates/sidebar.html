@@ -2,7 +2,7 @@
 <!-- Sidebar -->
 <div x-data="setup()" :class="{ 'dark': isDark }">
   <div
-    class="mt-16 ml-5 rounded-3xl h-5/6 fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-800 dark:bg-gray-900 text-white transition-all duration-300 border-none z-10 sidebar"
+    class="mt-16 ml-5 rounded-3xl h-5/6 fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-gray-900 dark:bg-gray-900 text-amber-600 transition-all duration-300 border-none z-10 sidebar"
   >
     <div
       class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow"
@@ -11,7 +11,7 @@
         <li>
           <a
             href="{% url 'dashboard_form' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800   border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -29,14 +29,14 @@
                 ></path>
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Dashboard</span>
+            <span class="   ml-2 text-sm tracking-wide truncate ">Dashboard</span>
           </a>
         </li>
 
         <li>
           <a
             href="{% url 'leads:lead-list' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -54,14 +54,14 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Leads</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Leads</span>
           </a>
         </li>
 
         <li>
           <a
             href="{% url 'leads:lead-search' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -79,14 +79,14 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Filters</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Filters</span>
           </a>
         </li>
         {% if request.user|has_permissions:"create" %}
         <li>
           <a
             href="{% url 'leads:lead-create' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -104,14 +104,14 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Create</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Create</span>
           </a>
         </li>
         {%endif%} {% if request.user.is_organisor %}
         <li>
           <a
             href="{% url 'agents:agent-list' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -129,14 +129,14 @@
                 ></path>
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Agents</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Agents</span>
           </a>
         </li>
 
         <li>
           <a
             href="{% url 'permissions:permission-list' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -154,14 +154,14 @@
                 ></path>
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Permissions</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Permissions</span>
           </a>
         </li>
 
         <li>
           <a
             href="{% url 'leads:leads-upload' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -179,14 +179,14 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Upload</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Upload</span>
           </a>
         </li>
 
         <li>
           <a
             href="{% url 'leads:add-sheet' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -204,13 +204,13 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">API</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">API</span>
           </a>
         </li>
         <li>
           <a
             href="{% url 'leads:add-tag' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -228,14 +228,14 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Tags</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Tags</span>
           </a>
         </li>
 
         <li>
           <a
             href="{% url 'leads:stats_filter' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -253,14 +253,14 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate">Reports</span>
+            <span class="  ml-2 text-sm tracking-wide truncate ">Reports</span>
           </a>
         </li>
 
         <li>
           <a
             href="{% url 'leads:sales-report-list' %}"
-            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-blue-600 text-white-600 dark:text-gray-400 hover:text-gray-200 border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
+            class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-amber-600  dark:hover:bg-amber-600  hover:text-gray-800  dark:text-gray-400 hover:text-gray-800  border-l-4 border-transparent hover:border-gray-200 dark:hover:border-gray-200 pr-6"
           >
             <span class="inline-flex justify-center items-center ml-4">
               <svg
@@ -278,7 +278,7 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm tracking-wide truncate"
+            <span class="  ml-2 text-sm tracking-wide truncate "
               >Sales Survey</span
             >
           </a>
@@ -288,12 +288,12 @@
       </ul>
       <div class="object-none object-bottom">
         <img
-          src="https://w2m-trading.com/wp-content/uploads/2022/05/w2m-crm-smallcopy.png"
+          src="https://beinmarkets.com/wp-content/uploads/2019/09/beinmarketslogo.png"
           class="max-w-full h-auto pl-24 pr-24"
           alt="CRM logo"
         />
         <p class="px-5 py-3 hidden md:block text-center text-xs">
-          Copyright @2021
+          Copyright @ MNB.Holdings
         </p>
       </div>
     </div>
