@@ -2,9 +2,9 @@ from django.core.management.base import BaseCommand
 import requests
 
 class Command(BaseCommand):
-    CALL_ENDPOINT = 'https://w2mtrading.coperato.net/gaya/api_ns/Click2Call/byAgent'
+    CALL_ENDPOINT = 'https://bein2.coperato.net/gaya/api_ns/Click2Call/byAgent'
     HANGUP_ENDPOINT = ''
-    AGENT_NUMBER = '997'
+    AGENT_NUMBER = '100'
     TEST_CLIENT_NUMBER = '+201023459934'
 
     def add_arguments(self, parser):
