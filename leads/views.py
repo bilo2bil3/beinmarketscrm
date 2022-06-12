@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.views import generic
-from agents.mixins import OrganisorAndLoginRequiredMixin
+from agents.mixins import OrganisorAndLoginRequiredMixin, PermissionAndLoginRequiredMixin
 from .models import Lead, Agent
 from .forms import (
     CustomUserCreationForm,
@@ -271,7 +271,7 @@ class LeadListView(LoginRequiredMixin, generic.ListView):
         return context
 
 
-class AssignAgentView(OrganisorAndLoginRequiredMixin, generic.FormView):
+class AssignAgentView(LoginRequiredMixin, generic.FormView):
     template_name = "leads/assign_agent.html"
     form_class = AssignAgentForm
 

@@ -1,7 +1,7 @@
 import datetime
 from django.views import generic
 from django.db.models import ExpressionWrapper, Count, IntegerField, Q, F
-from agents.mixins import LoginRequiredMixin, OrganisorAndLoginRequiredMixin
+from agents.mixins import LoginRequiredMixin
 from leads import exporter
 from leads.forms import DashboardForm
 from leads.models import Lead, Category
@@ -18,7 +18,7 @@ class DashboardFormView(LoginRequiredMixin, generic.FormView):
     template_name = "leads/dashboard_form.html"
 
 
-class DashboardListView(OrganisorAndLoginRequiredMixin, generic.ListView):
+class DashboardListView(LoginRequiredMixin, generic.ListView):
     """display/export stats for each catg, total leads
     and converted leads during a specific period."""
 

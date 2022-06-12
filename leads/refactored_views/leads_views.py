@@ -49,21 +49,26 @@ class LeadCreateView(PermissionAndLoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class LeadUpdateView(OrganisorAndLoginRequiredMixin, generic.UpdateView):
+class LeadUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name = "leads/lead_update.html"
     form_class = LeadModelForm
     success_url = reverse_lazy("leads:lead-list")
 
     def get_queryset(self):
         user = self.request.user
+        if user.is_organisor:
+            queryset = Lead.objects.filter(organisation=user.userprofile)
+        else:
+            queryset = Lead.objects.filter(organisation=user.agent.organisation)
+            # filter for the agent that is logged in
+            queryset = queryset.filter(agent__user=user)
         # initial queryset of leads for the entire organisation
-        return Lead.objects.filter(organisation=user.userprofile)
+        return queryset
 
     def form_valid(self, form):
         form.save()
         # messages.info(self.request, "You have successfully updated this lead")
         return super().form_valid(form)
-
 
 class LeadDeleteView(OrganisorAndLoginRequiredMixin, generic.DeleteView):
     template_name = "leads/lead_delete.html"

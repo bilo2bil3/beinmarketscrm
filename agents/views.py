@@ -8,20 +8,24 @@ from django.shortcuts import reverse
 from leads.models import Agent
 from permissions.models import Permission
 from .forms import AgentModelForm
-from .mixins import OrganisorAndLoginRequiredMixin
+from .mixins import OrganisorAndLoginRequiredMixin, PermissionAndLoginRequiredMixin
 from django.shortcuts import render
 
 
-class AgentListView(OrganisorAndLoginRequiredMixin, generic.ListView):
+class AgentListView(PermissionAndLoginRequiredMixin, generic.ListView):
     template_name = "agents/agent_list.html"
-    
+    def get_page_code(self):
+        return "create_agent"
+
     def get_queryset(self):
         organisation = self.request.user.userprofile
         return Agent.objects.filter(organisation=organisation)
 
-class AgentPermissionListView(OrganisorAndLoginRequiredMixin, generic.ListView):
+class AgentPermissionListView(PermissionAndLoginRequiredMixin, generic.ListView):
     template_name = "permissions/agent_permission_list.html"
-    
+    def get_page_code(self):
+        return "create_agent"
+
     def get_queryset(self):
         self.context = {
            "permissions": Permission.objects.all(),
@@ -51,9 +55,12 @@ class AgentPermissionListView(OrganisorAndLoginRequiredMixin, generic.ListView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class AgentCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
+class AgentCreateView(PermissionAndLoginRequiredMixin, generic.CreateView):
     template_name = "agents/agent_create.html"
     form_class = AgentModelForm
+
+    def get_page_code(self):
+        return "create_agent"
 
     def get_success_url(self):
         return reverse("agents:agent-list")
@@ -77,29 +84,37 @@ class AgentCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
         return super(AgentCreateView, self).form_valid(form)
 
 
-class AgentDetailView(OrganisorAndLoginRequiredMixin, generic.DetailView):
+class AgentDetailView(PermissionAndLoginRequiredMixin, generic.DetailView):
     template_name = "agents/agent_detail.html"
     context_object_name = "agent"
+
+    def get_page_code(self):
+        return "create_agent"
 
     def get_queryset(self):
         organisation = self.request.user.userprofile
         return Agent.objects.filter(organisation=organisation)
 
 
-class AgentUpdateView(OrganisorAndLoginRequiredMixin, generic.UpdateView):
+class AgentUpdateView(PermissionAndLoginRequiredMixin, generic.UpdateView):
     template_name = "agents/agent_update.html"
     form_class = AgentModelForm
 
     def get_success_url(self):
         return reverse("agents:agent-list")
+    def get_page_code(self):
+        return "create_agent"
 
     def get_queryset(self):
         organisation = self.request.user.userprofile
         return Agent.objects.filter(organisation=organisation)
 
-class AgentDeleteView(OrganisorAndLoginRequiredMixin, generic.DeleteView):
+class AgentDeleteView(PermissionAndLoginRequiredMixin, generic.DeleteView):
     template_name = "agents/agent_delete.html"
     context_object_name = "agent"
+
+    def get_page_code(self):
+        return "create_agent"
 
     def get_success_url(self):
         return reverse("agents:agent-list")

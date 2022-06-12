@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
-from agents.mixins import OrganisorAndLoginRequiredMixin
+from agents.mixins import OrganisorAndLoginRequiredMixin, PermissionAndLoginRequiredMixin
 from leads.models import Lead, Category
 from leads.forms import CategoryModelForm
 
@@ -48,7 +48,7 @@ class CategoryDetailView(LoginRequiredMixin, generic.DetailView):
         return queryset
 
 
-class CategoryCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
+class CategoryCreateView(PermissionAndLoginRequiredMixin, generic.CreateView):
     template_name = "leads/category_create.html"
     form_class = CategoryModelForm
     success_url = reverse_lazy("leads:category-list")
@@ -58,7 +58,7 @@ class CategoryCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class CategoryDeleteView(OrganisorAndLoginRequiredMixin, generic.DeleteView):
+class CategoryDeleteView(PermissionAndLoginRequiredMixin, generic.DeleteView):
     template_name = "leads/category_delete.html"
     success_url = reverse_lazy("leads:category-list")
 
@@ -72,7 +72,7 @@ class CategoryDeleteView(OrganisorAndLoginRequiredMixin, generic.DeleteView):
         return queryset
 
 
-class CategoryUpdateView(OrganisorAndLoginRequiredMixin, generic.UpdateView):
+class CategoryUpdateView(PermissionAndLoginRequiredMixin, generic.UpdateView):
     template_name = "leads/category_update.html"
     form_class = CategoryModelForm
     success_url = reverse_lazy("leads:category-list")
