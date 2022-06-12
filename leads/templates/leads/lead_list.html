@@ -12,18 +12,19 @@
 
                 <div class="flex flex-col text-center ">
                 <h1 class="text-4xl text-center text-amber-600 font-extrabold">Leads</h1>
-        
+                 {% if request.user|has_permissions:"create_category"%}   
                 <a class="text-gray-500 dark:text-gray-200 hover:text-amber-600" href="{% url 'leads:category-list' %}">
                     View categories
-                </a><br>
+                </a>
+                    {% endif %}  
+                <br>
 </div>
 
         <div class="w-full mb-6 py-6 flex justify-between items-center border-b border-gray-200 ">
-    {% if request.user|has_permissions:"show_action_button"%}      
+    {% if request.user|has_permissions:"action_button"%}         
                 <div class="dropdown ">
     <button class=" dropbtn w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-2xl text-black bg-amber-600 hover:bg-gray-900 hover:text-amber-600 md:py-2 md:text-lg md:px-10 sm:text-xs">Action</button>
     <div class="dropdown-content">
-    {%endif%}
 
     <a href="#" id="delete-leads">Delete</a>
         
@@ -32,11 +33,12 @@
         
 
     </div>
+        {%endif%}
 </div>
               
             
                 
-    
+       {% if request.user|has_permissions:"assign_agents"%}    
                         <div id="assign-leads-view-1" >
                             <button id="show-assign-leads" class=" w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-2xl text-black bg-amber-600 hover:bg-black hover:text-amber-600 md:py-2 md:text-lg md:px-10">
                                 Assign Agent
@@ -58,7 +60,7 @@
                                 Cancel
                             </button>
                         </div>
-                    
+   {%endif%}
         
             </div>
         </div>
@@ -87,7 +89,7 @@
                             <th scope="col" class="px-8 py-3 text-centre text-xs     text-amber-600  bg-black dark:bg-gray-900  gap-x-2.5  font-bold  uppercase tracking-wider">
                             Phone
                             </th>
-                             {% if request.user.is_organisor %} 
+{% if request.user|has_permissions:"whatsapp"%}    
                             <th scope="col" class="px-8 py-3 text-centre text-xs     text-amber-600  bg-black dark:bg-gray-900  gap-x-2.5  font-bold  uppercase tracking-wider">
                             Whatsapp
                             </th>
@@ -117,7 +119,7 @@
                             <a class="text-amber-600 hover:text-amber-600 " href="{{ date_url_desc }}">&#9660;</a>
                             </th>
 
- {% if request.user.is_organisor %}       
+{% if request.user|has_permissions:"edit_leads"%}        
                         <th scope="col" class="px-8 py-3 text-centre text-xs  text-amber-600  bg-black dark:bg-gray-900  gap-x-2.5  font-bold  uppercase tracking-wider">
                             Edit
                             <br>
@@ -141,7 +143,8 @@
                                     {{ lead.service }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-200 text-center ">
-                           {% if request.user.is_organisor  %}
+{% if request.user|has_permissions:"phone_number"%}    
+
                                         {{ lead.phone_number }}
                                         <br>
                                  {% endif %}
@@ -152,7 +155,7 @@
                                         hangup
                                     </button>
                                 </td>
-      {% if request.user.is_organisor  %}
+{% if request.user|has_permissions:"whatsapp"%}    
     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-200 text-center ">
                      
                                         <a class="" href="https://api.whatsapp.com/send?phone={{ lead.phone_number }}">
@@ -197,7 +200,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm  text-gray-600 dark:text-gray-200 text-center ">
                                     {{ lead.date_added }}
                                 </td>
-                                 {% if request.user.is_organisor %}     
+{% if request.user|has_permissions:"edit_leads"%}   
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <a href="{% url 'leads:lead-update' lead.pk %}" class="text-amber-600 font-bold  hover:text-indigo-900">
                                         Edit
