@@ -67,6 +67,7 @@ def handle_upload_follow_ups(instance, filename):
 class FollowUp(models.Model):
     lead = models.ForeignKey(Lead, related_name="followups", on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
+    # reminder = models.ManyToManyField(Schedule, related_name='follow_up_reminders')
     notes = models.TextField(blank=True, null=True)
     file = models.FileField(null=True, blank=True, upload_to=handle_upload_follow_ups)
 
