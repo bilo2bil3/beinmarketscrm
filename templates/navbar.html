@@ -101,7 +101,7 @@
                 />
               </svg>
             </button>
-            <ul id="notification-dropdown" class="absolute -ml-10 mt-4 mr-0 bg-yellow-600 w-52 p-2 shadow-md text-black hidden">
+            <ul id="notification-dropdown" class="absolute -ml-10 mt-4 mr-0 bg-amber-600 w-52 p-2 shadow-md text-black border rounded-lg hidden">
               {% for notification in notifications %}
                 <li><a class="hover:cursor-pointer" @click="navigate('/leads/{{ notification.lead.id }}/')">{{ notification.message }}</a></li>
                 <hr>
