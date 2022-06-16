@@ -133,13 +133,14 @@
               Logout
             </a>
           </li>
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js'></script>
           {{ "reminder"|json_script:"room-name" }}
           <script>
             const roomName = JSON.parse(document.getElementById('room-name').textContent);
-            const notificationSocket = new WebSocket(
+            const notificationSocket = new ReconnectingWebSocket(
                 'ws://'
                 + window.location.host
-                + '/ws/notification/'
+                + '/notification/'
                 + roomName
                 + '/'
             );
