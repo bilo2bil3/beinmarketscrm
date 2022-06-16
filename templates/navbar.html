@@ -7,7 +7,12 @@
       <div
         class="mr-6 rounded-3xl flex items-center justify-start md:justify-center pl-3 w-14 md:w-72 h-14 bg-gray-900 dark:bg-gray-900 border-none"
       >
-        <span class="hidden md:block">Beinmarkets CRM</span>
+              <img
+          src="https://beinmarkets.com/wp-content/uploads/2019/09/beinmarketslogo.png"
+          class="w-10 h-10"
+          alt="CRM logo"
+        />
+        <span class="hidden md:block ml-2">Beinmarkets CRM</span>
       </div>
 
       <div
@@ -96,7 +101,7 @@
                 />
               </svg>
             </button>
-            <ul id="notification-dropdown" class="absolute -ml-10 mt-4 mr-0 bg-yellow-100 w-52 p-2 shadow-md text-black hidden">
+            <ul id="notification-dropdown" class="absolute -ml-10 mt-4 mr-0 bg-amber-600 w-52 p-2 shadow-md text-black border rounded-lg hidden">
               {% for notification in notifications %}
                 <li><a class="hover:cursor-pointer" @click="navigate('/leads/{{ notification.lead.id }}/')">{{ notification.message }}</a></li>
                 <hr>
