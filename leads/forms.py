@@ -31,10 +31,6 @@ class LeadModelForm(forms.ModelForm):
             "email",
             # "profile_picture",
         )
-    def init(self, *args, **kwargs):
-        super(LeadModelForm, self).init(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'text-white'
 
     def clean_first_name(self):
         data = self.cleaned_data["first_name"]
