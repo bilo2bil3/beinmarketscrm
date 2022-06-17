@@ -8,6 +8,7 @@ const setup = () => {
 
   const setTheme = (value) => {
     window.localStorage.setItem('dark', value)
+    window.location.reload()
   }
 
   return {
