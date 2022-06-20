@@ -15,7 +15,9 @@ class LeadDetailView(LoginRequiredMixin, generic.DetailView):
     def get_queryset(self):
         user = self.request.user
         # initial queryset of leads for the entire organisation
-        if user.is_organisor:
+        if user.is_superuser:
+            queryset = Lead.objects.all()
+        elif user.is_organisor:
             queryset = Lead.objects.filter(organisation=user.userprofile)
         else:
             queryset = Lead.objects.filter(organisation=user.agent.organisation)
@@ -56,7 +58,9 @@ class LeadUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_queryset(self):
         user = self.request.user
-        if user.is_organisor:
+        if user.is_superuser:
+            queryset = Lead.objects.all()
+        elif user.is_organisor:
             queryset = Lead.objects.filter(organisation=user.userprofile)
         else:
             queryset = Lead.objects.filter(organisation=user.agent.organisation)
