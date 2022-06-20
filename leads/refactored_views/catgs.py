@@ -1,9 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.views import generic
 from django.urls import reverse_lazy
 from agents.mixins import OrganisorAndLoginRequiredMixin, PermissionAndLoginRequiredMixin
 from leads.models import Lead, Category
-from leads.forms import CategoryModelForm
+from leads.forms import CategoryModelForm, User
 
 
 class CategoryListView(LoginRequiredMixin, generic.ListView):
@@ -54,9 +56,14 @@ class CategoryCreateView(PermissionAndLoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("leads:category-list")
 
     def form_valid(self, form):
-        form.instance.organisation.set(self.request.user.userprofile)
+        # form.instance.organisation.set(self.request.user.userprofile)
         return super().form_valid(form)
 
+# @receiver(post_save, sender=Category)
+# def update_organisation(sender, instance, **kwargs):
+#     users = User.objects.all()
+#     for user in users:
+#         instance.organisation.set(user.userprofile)
 
 class CategoryDeleteView(PermissionAndLoginRequiredMixin, generic.DeleteView):
     template_name = "leads/category_delete.html"
