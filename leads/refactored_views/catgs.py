@@ -54,7 +54,7 @@ class CategoryCreateView(PermissionAndLoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("leads:category-list")
 
     def form_valid(self, form):
-        form.instance.organisation = self.request.user.userprofile
+        form.instance.organisation.set(self.request.user.userprofile)
         return super().form_valid(form)
 
 
