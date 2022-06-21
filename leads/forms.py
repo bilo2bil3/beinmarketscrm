@@ -51,6 +51,12 @@ class LeadForm(forms.Form):
     last_name = forms.CharField()
     source = forms.CharField()
 
+class LeadsSheetForm(forms.ModelForm):
+    random = forms.BooleanField(required=False)
+    
+    class Meta:
+        model = LeadsSheet
+        fields = ("source", "url", "sheet_name", "agent", "random")
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
