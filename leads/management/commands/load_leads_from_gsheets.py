@@ -8,7 +8,7 @@ from leads.models import Lead, LeadsSheet
 env = environ.Env()
 
 class Command(BaseCommand):
-    API_KEY = "AIzaSyCbF5pmdH9A78gO2J5Bu35T-zyeBAblXw0"
+    API_KEY = env('GOOGLE_API_KEY')
     ENDPOINT_URL = 'https://sheets.googleapis.com/v4/spreadsheets/{}/values/{}'
     PARAMS = {'key': API_KEY}
     def add_arguments(self, parser):
