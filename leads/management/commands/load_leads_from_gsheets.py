@@ -8,7 +8,7 @@ from leads.models import Lead, LeadsSheet
 env = environ.Env()
 
 class Command(BaseCommand):
-    API_KEY = env('GOOGLE_API_KEY')
+    API_KEY = "AIzaSyCbF5pmdH9A78gO2J5Bu35T-zyeBAblXw0"
     ENDPOINT_URL = 'https://sheets.googleapis.com/v4/spreadsheets/{}/values/{}'
     PARAMS = {'key': API_KEY}
     def add_arguments(self, parser):
@@ -21,6 +21,7 @@ class Command(BaseCommand):
 
             url = self.ENDPOINT_URL.format(sheet_id, sheet_range)
             r = requests.get(url, params=self.PARAMS)
+            print(url)
             if r.status_code != 200:
                 raise Exception(f'connect to gsheets api | ERROR | {r.status_code}')
 
