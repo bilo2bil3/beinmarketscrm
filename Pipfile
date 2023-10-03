@@ -20,7 +20,8 @@ requests = "*"
 google-api-python-client = "*"
 google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
-channels= "==3.0.5"
+channels = "==3.0.5"
+
 [dev-packages]
 
 [requires]
