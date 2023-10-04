@@ -1,10 +1,10 @@
 amqp==5.1.1
-asgiref==3.7.2
+asgiref==3.3.1
 billiard==4.1.0
 cachetools==5.0.0
 celery==5.3.4
 certifi==2021.10.8
-channels==4.0.0
+channels==3.0.4
 charset-normalizer==2.0.12
 click==8.1.7
 click-didyoumean==0.3.0
@@ -14,9 +14,9 @@ colorama==0.4.6
 crispy-tailwind==0.2.0
 cron-descriptor==1.4.0
 distlib==0.3.7
-Django==3.2
-django-celery-beat==2.5.0
-django-celery-results==2.5.1
+Django==3.2  # Specify the compatible Django version
+django-celery-beat==2.5.0  # Use a version compatible with Django 3.2
+django-celery-results==2.5.1  # Use a version compatible with Django 3.2
 django-crispy-forms==1.10.0
 django-environ==0.4.5
 django-tailwind==1.1.0
@@ -34,9 +34,6 @@ idna==3.3
 kombu==5.3.2
 oauthlib==3.2.0
 Pillow==10.0.1
-pipenv==2023.10.3
-platformdirs==3.11.0
-prompt-toolkit==3.0.39
 protobuf==3.20.1
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
