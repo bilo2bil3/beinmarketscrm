@@ -1,5 +1,5 @@
 amqp==5.1.1
-asgiref==3.3.1  # Specify a version compatible with channels and Django
+asgiref==3.4.1  # Specify a version compatible with channels and Django
 billiard==4.1.0
 cachetools==5.0.0
 celery==5.3.4
