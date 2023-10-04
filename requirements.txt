@@ -14,7 +14,7 @@ colorama==0.4.6
 crispy-tailwind==0.2.0
 cron-descriptor==1.4.0
 distlib==0.3.7
-Django==4.2.5
+Django==3.2
 django-celery-beat==2.5.0
 django-celery-results==2.5.1
 django-crispy-forms==1.10.0
