@@ -1,0 +1,7 @@
+[2022-06-13 04:52:00 +0000] [6137] [INFO] Starting gunicorn 20.0.4
+[2022-06-13 04:52:00 +0000] [6137] [INFO] Listening at: http://127.0.0.1:8000 (6137)
+[2022-06-13 04:52:00 +0000] [6137] [INFO] Using worker: sync
+[2022-06-13 04:52:00 +0000] [6139] [INFO] Booting worker with pid: 6139
+[2022-06-13 04:52:20 +0000] [6137] [INFO] Handling signal: int
+[2022-06-13 06:52:20 +0200] [6139] [INFO] Worker exiting (pid: 6139)
+[2022-06-13 04:52:20 +0000] [6137] [INFO] Shutting down: Master
