@@ -21,6 +21,7 @@ class Command(BaseCommand):
 
             url = self.ENDPOINT_URL.format(sheet_id, sheet_range)
             r = requests.get(url, params=self.PARAMS)
+            print(url)
             if r.status_code != 200:
                 raise Exception(f'connect to gsheets api | ERROR | {r.status_code}')
 

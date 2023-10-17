@@ -125,6 +125,41 @@ function assignSelectedLeadsRandomly(selectAllBtn) {
     .catch(err => console.log(err));
 }
 
+function changeStatus(selectAllBtn) {
+  // Get selected status from the dropdown
+  const selectedStatus = document.getElementById('statusSelect').value;
+  // get leads
+  const leadsToChangeStatus = [];
+  document.querySelectorAll('input.select-lead:checked').forEach(e => {
+    leadsToChangeStatus.push(e.value);
+  })
+  selectAllBtn.checked= false;
+  if (!leadsToChangeStatus.length) {
+    return;
+  }
+
+  // sending the request
+  const answer = confirm('Are you sure you want to change status of  the selected leads?')
+  if (!answer) {
+    console.log('cancelled');
+    return;
+  }
+  const ASSIGN_ENDPOINT = '/leads/change_status_selected_leads';
+  const CSRF_TOKEN = document.cookie
+    .split(';')
+    .find(row => row.startsWith('csrftoken='))
+    .split('=')[1];
+  const HEADERS = { 'content-type': 'application/json', 'X-CSRFToken': CSRF_TOKEN, }
+  const PAYLOAD = { leads: leadsToChangeStatus,new_status: selectedStatus, url: window.location.href }
+  fetch(ASSIGN_ENDPOINT, { redirect: 'follow', method: 'POST', headers: HEADERS, body: JSON.stringify(PAYLOAD) })
+    .then(res => {
+      if (res.ok) {
+        window.location.href = res.url;
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 function hideAssignLeadsForm() {
   document.getElementById('assign-leads-view-2').style.display = 'none';
   document.getElementById('assign-leads-view-1').style.display = 'block';
@@ -137,13 +172,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const hideAssignBtn = document.getElementById('hide-assign-leads');
   const assignSelectedBtn = document.getElementById('assign-leads');
   const assignSelectedRandomlyBtn = document.getElementById('assign-leads-random');
-  
+  const changeStatusBtn = document.getElementById('change-status');
+
   selectAllBtn.addEventListener('change', () => toggleAllCheckboxes(selectAllBtn));
   deleteSelectedBtn.addEventListener('click', () => deleteSelectedLeads(selectAllBtn));
   showAssignBtn.addEventListener('click', showAssignLeadsForm);
   hideAssignBtn.addEventListener('click', hideAssignLeadsForm);
   assignSelectedBtn.addEventListener('click', () => assignSelectedLeads(selectAllBtn));
   assignSelectedRandomlyBtn.addEventListener('click', () => assignSelectedLeadsRandomly(selectAllBtn));
+  changeStatusBtn.addEventListener('click', () => changeStatus(selectAllBtn));
+
 
   // initially hide assign leads view #2
   // the one with two buttons: assign, cancel

@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.views import generic
 from agents.mixins import OrganisorAndLoginRequiredMixin, PermissionAndLoginRequiredMixin
-from .models import Lead, Agent
+from .models import Lead, Agent , Category
 from .forms import (
     CustomUserCreationForm,
     AssignAgentForm,
@@ -43,6 +43,18 @@ def landing_page(request):
     return render(request, "landing.html")
 
 
+def LeadsChangeStatus(request,leads):
+    print(leads)
+    # post = get_object_or_404(Post,id=request.POST.get('post_id'))
+    # liked = False
+    # if post.likes.filter(id=request.user.id).exists():
+    #     post.likes.remove(request.user)
+    #     liked = False
+    # else:
+    #     post.likes.add(request.user)
+    #     liked = True
+    #
+    # return  HttpResponseRedirect(reverse('article-detail',args=[str(pk)]))
 class LeadListView(LoginRequiredMixin, generic.ListView):
     template_name = "leads/lead_list.html"
     context_object_name = "leads"
@@ -52,6 +64,8 @@ class LeadListView(LoginRequiredMixin, generic.ListView):
     # to handle both cases of:
     # generate leads csv or view leads
     def get(self, request, *args, **kwargs):
+        print("this is the request",request.get_full_path())
+
         if "export=1" in request.get_full_path():
             response = HttpResponse(
                 content_type="text/csv",
@@ -61,6 +75,7 @@ class LeadListView(LoginRequiredMixin, generic.ListView):
             ] = 'attachment; filename="exported-leads.csv"'
             writer = csv.writer(response)
             qs = self.get_queryset()
+            # print(export_link)
             writer.writerow(
                 [
                     "FIRST NAME",
@@ -270,9 +285,11 @@ class LeadListView(LoginRequiredMixin, generic.ListView):
         export_link = add_query_string(url, {"export": 1})
         context.update({"export_link": export_link})
 
+
         # to assign leads from lead_list view
         # we need show all agents
         context.update({"agents": Agent.objects.all()})
+        context.update({"status": Category.objects.all()})
         # user = self.request.user
         # if user.is_organisor:
         #     queryset = Lead.objects.filter(

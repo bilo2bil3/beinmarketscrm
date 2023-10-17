@@ -78,6 +78,11 @@ urlpatterns = [
         ajax.assign_selected_leads_randomly,
         name="assign-selected-leads-randomly",
     ),
+    path(
+        "change_status_selected_leads",
+        ajax.change_status_selected_leads,
+        name="assign-selected-leads-randomly",
+    ),
     # path('export-leads', views.export_leads, name='export-leads'),
     # c2c
     path("click2call", click2call.click_to_call, name="click2call"),
