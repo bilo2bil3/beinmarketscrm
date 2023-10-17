@@ -11,17 +11,17 @@ READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 if READ_DOT_ENV_FILE:
     environ.Env.read_env()
 
-# DEBUG = env('DEBUG')
-# SECRET_KEY = env('SECRET_KEY')
-DEBUG = True
-SECRET_KEY = "1234"
+DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
+# DEBUG = True
+# SECRET_KEY = "1234"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS", default="127.0.0.1,localhost").split(",")
-# DEVELOPMENT_MODE = env("DEVELOPMENT_MODE", default=False)
-DEVELOPMENT_MODE = True
+DEVELOPMENT_MODE = env("DEVELOPMENT_MODE", default=False)
+# DEVELOPMENT_MODE = True
 
 # Application definition
 
