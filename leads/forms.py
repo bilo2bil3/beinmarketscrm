@@ -128,6 +128,17 @@ class FollowUpModelForm(forms.ModelForm):
     title = forms.CharField(max_length=30, required=False)
     date = DateField(required=False)
     time = TimeField(required=False)
+    # def __init__(self, *args, **kwargs):
+    #     self.user = kwargs.pop('user', None)
+    #     super().__init__(*args, **kwargs)
+    #
+    # def save(self, commit=True):
+    #     instance = super().save(commit=False)
+    #     instance.user = self.user  # Associate the user with the FollowUp instance
+    #     if commit:
+    #         instance.save()
+    #     return instance
+
     class Meta:
         model = FollowUp
         fields = ("notes", "file")

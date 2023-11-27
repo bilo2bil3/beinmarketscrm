@@ -22,11 +22,13 @@ class FollowUpCreateView(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.lead = Lead.objects.get(pk=self.kwargs["pk"])
+        form.instance.user = self.request.user
+        print("form.instance",form.instance.user)
         return super().form_valid(form)
     
     def post(self, request, *args, **kwargs):
         data = request.POST
-        
+        print(data)
         if data.get('is_reminder') == 'true':
             lead = Lead.objects.get(pk=kwargs['pk'])
             schedule = Schedule.objects.create(lead=lead, title=data['title'], date=data['date'], time=data['time'], user=request.user)
